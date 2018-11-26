@@ -18,6 +18,7 @@ void ConstructionMaterials::info() const
 {
 	Product::info();
 	cout << "is it eco-friendly: " << boolalpha << ecoMark << endl;
+	cout << "price: " << getPrice() << endl;
 }
 
 bool ConstructionMaterials::criticalDaysToExpiration() const

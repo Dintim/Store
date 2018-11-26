@@ -36,6 +36,7 @@ void Store::info() const
 	for (size_t i = 0; i < goods.size(); i++)
 	{
 		goods[i]->info();
+		cout << "\n-------------------------------\n\n";
 	}
 }
 
@@ -43,9 +44,10 @@ void Store::listCriticalExpDate() const
 {
 	for (size_t i = 0; i < goods.size(); i++)
 	{
-		if (goods[i]->criticalDaysToExpiration())
+		if (goods[i]->criticalDaysToExpiration()) {
 			goods[i]->info();
-		cout << "\n-------------------------------\n";
+			cout << "\n-------------------------------\n";
+		}
 	}
 }
 
@@ -53,8 +55,9 @@ void Store::listExpiredDate() const
 {
 	for (size_t i = 0; i < goods.size(); i++)
 	{
-		if (goods[i]->expiredDate())
+		if (goods[i]->expiredDate()) {
 			goods[i]->info();
-		cout << "\n-------------------------------\n";
+			cout << "\n-------------------------------\n";
+		}
 	}
 }

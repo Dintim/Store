@@ -18,6 +18,7 @@ void OfficeSupplies::info() const
 {
 	Product::info();
 	cout << "quality: " << quality << endl;
+	cout << "price: " << getPrice() << endl;
 }
 
 bool OfficeSupplies::criticalDaysToExpiration() const

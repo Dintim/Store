@@ -1,5 +1,4 @@
 #include "Store.h"
-#include "date_.h"
 #include "HouseAppliances.h"
 #include "OfficeSupplies.h"
 #include "ConstructionMaterials.h"
@@ -7,14 +6,14 @@
 
 void main()
 {
-	/*Store s("xxx");
-	date_ a(31, 12, 2023);
-	s.addProduct(new HouseAppliances("TV", a, 200148.5, 167));
-	s.info();*/
-
-	date_ a(31, 12, 2018);
-	date_ b(26, 11, 2018);
-	cout << daysBetweenDates(b, a);
+	Store s("xxx");	
+	s.addProduct(new HouseAppliances("TV", date_(28,4,2031), 200148.5, 167));
+	s.addProduct(new OfficeSupplies("Printer", date_(5, 12, 2018), 50000, "high"));
+	s.addProduct(new ConstructionMaterials("White paint", date_(25, 11, 2018), 7000, 1));
+	s.info();
+	s.listCriticalExpDate();
+	
+	
 
 	system("pause");
 }

@@ -26,7 +26,7 @@ void Product::setPrice(double price)
 
 void Product::info() const
 {
-	cout << "id: " << id << "\nname: " << name << "\nexpiration date: " << expDate << endl;
+	cout << "id: " << id << "\nname: " << name << "\nexpiration date: " << expDate;
 }
 
 bool Product::expiredDate() const

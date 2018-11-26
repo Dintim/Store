@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConstructionMaterials.cpp" />
+    <ClCompile Include="date_.cpp" />
     <ClCompile Include="HouseAppliances.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OfficeSupplies.cpp" />
