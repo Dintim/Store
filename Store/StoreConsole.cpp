@@ -27,6 +27,7 @@ void StoreConsole::mainMenu()
 	while (true) {
 		system("cls");
 		cout << "Store's name: " << st.getStoreName() << endl;
+		cout << "count of goods in store: " << st.countOfGoods() << endl;
 		cout << "\n-----------------------------\n\n";
 		cout << "1. download list of produts from file\n";
 		cout << "2. add new product to store\n";
@@ -146,8 +147,37 @@ void StoreConsole::delProductMenu()
 }
 
 void StoreConsole::showInfoMenu()
-{
-	cout << "info";
+{	
+	int ch;
+	while (true) {
+		system("cls");
+		cout << "Choose print mode:\n";
+		cout << "1. All products\n";
+		cout << "2. Products with critical expiration date\n";
+		cout << "3. Products with expired date\n";
+		cout << "0. go back\n";
+		cin >> ch;
+		if (ch > 3)
+			unknownCommand();
+		else
+			break;
+	}
+	if (ch == 0)
+		return;
+	switch (ch)
+	{
+	case 1:
+		st.info();
+		break;
+	case 2:
+		st.listCriticalExpDate();
+		break;
+	case 3:
+		cout << "list\n";
+		break;
+	}
+	
+	system("pause");
 }
 
 void StoreConsole::unknownCommand()

@@ -13,6 +13,7 @@ public:
 	void addProduct(Product* prod);
 	void delProduct(Product* prod);
 	bool delProductById(int id);
+	int countOfGoods()const { return goods.size(); }
 	void info()const;
 	void listCriticalExpDate()const;
 	void listExpiredDate()const;
