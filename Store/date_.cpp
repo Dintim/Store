@@ -416,22 +416,35 @@ date_ operator-(const date_ & a, int day)
 int daysBetweenDates(const date_ & a, const date_ & b)
 {
 	int counDays = 0;
-	int x = b.getYear(), y = a.getYear();
-	int n = b.getMonth(), m = a.getMonth();
-	counDays += b.getDay();
-	
-	if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
-		counDays += 31 - a.getDay();
-	if (m == 4 || m == 6 || m == 9 || m == 11)
-		counDays += 30 - a.getDay();
-	if (m == 2) {
-		if (a.getYear() % 400 == 0 || (a.getYear() % 4 == 0 && a.getYear() % 100 != 0))
-			counDays += 29 - a.getDay();
-		else
-			counDays += 28 - a.getDay();
-	}
-	
-	if (x > y) {
+	int x = 0, x_const = 0, n = 0, h = 0, y = 0, y_const = 0, m = 0, k = 0;
+	if (b.getYear() > a.getYear() || b.getYear() < a.getYear()) {
+		if (b.getYear() > a.getYear()) {
+			x = b.getYear(), y = a.getYear();
+			x_const = b.getYear(), y_const = a.getYear();
+			n = b.getMonth(), m = a.getMonth();
+			h = b.getDay(), k = a.getDay();
+		}
+		else {
+			x = a.getYear(), y = b.getYear();
+			x_const = a.getYear(), y_const = b.getYear();
+			n = a.getMonth(), m = b.getMonth();
+			h = a.getDay(), k = b.getDay();
+		}
+
+		counDays += h;
+
+		if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+			counDays += 31 - k;
+		if (m == 4 || m == 6 || m == 9 || m == 11)
+			counDays += 30 - k;
+		if (m == 2) {
+			if (y_const % 400 == 0 || (y_const % 4 == 0 && y_const % 100 != 0))
+				counDays += 29 - k;
+			else
+				counDays += 28 - k;
+		}
+
+
 		x = x - 1;
 		while (x != y) {
 			if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
@@ -449,7 +462,7 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 			if (n == 4 || n == 6 || n == 9 || n == 11)
 				counDays += 30;
 			if (n == 2) {
-				if (b.getYear() % 400 == 0 || (b.getYear() % 4 == 0 && b.getYear() % 100 != 0))
+				if (x_const % 400 == 0 || (x_const % 4 == 0 && x_const % 100 != 0))
 					counDays += 29;
 				else
 					counDays += 28;
@@ -464,7 +477,7 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 			if (m == 4 || m == 6 || m == 9 || m == 11)
 				counDays += 30;
 			if (m == 2) {
-				if (a.getYear() % 400 == 0 || (a.getYear() % 4 == 0 && a.getYear() % 100 != 0))
+				if (y_const % 400 == 0 || (y_const % 4 == 0 && y_const % 100 != 0))
 					counDays += 29;
 				else
 					counDays += 28;
@@ -472,29 +485,55 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 			m++;
 		}
 	}
-	else if (x == y) {		
-		if (n > m) {
-			n--;
-			while (n != m) {
-				if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
-					counDays += 31;
-				if (n == 4 || n == 6 || n == 9 || n == 11)
-					counDays += 30;
-				if (n == 2) {
-					if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
-						counDays += 29;
-					else
-						counDays += 28;
-				}
-				n--;
-			}
+	if (b.getYear() == a.getYear()) {
+		x = b.getYear(), y = a.getYear();
+		if (b.getMonth() >= a.getMonth()) {
+			n = b.getMonth(), m = a.getMonth();
+			h = b.getDay(), k = a.getDay();
 		}
-		else if (n < m) {
-			counDays = -1;
+		else if (b.getMonth() < a.getMonth()) {
+			n = a.getMonth(), m = b.getMonth();
+			h = a.getDay(), k = b.getDay();
+		}
+		counDays += h;
+		if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+			counDays += 31 - k;
+		if (m == 4 || m == 6 || m == 9 || m == 11)
+			counDays += 30 - k;
+		if (m == 2) {
+			if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
+				counDays += 29 - k;
+			else
+				counDays += 28 - k;
+		}
+
+		n--;
+		while (n != m) {
+			if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
+				counDays += 31;
+			if (n == 4 || n == 6 || n == 9 || n == 11)
+				counDays += 30;
+			if (n == 2) {
+				if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
+					counDays += 29;
+				else
+					counDays += 28;
+			}
+			n--;
 		}
 	}
-	else { 
-		counDays = -1;		
+
+
+	if (b.getYear() < a.getYear()) {
+		return -counDays;
+	}
+	else {
+		if (b.getMonth() < a.getMonth())
+			return -counDays;
+		else {
+			if (b.getDay() < a.getDay())
+				return -counDays;
+		}
 	}
 	return counDays;
 }
