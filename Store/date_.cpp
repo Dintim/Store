@@ -488,7 +488,7 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 			n--;
 		}		
 	}
-	else return 0;
+	else return -1;
 	return counDays;
 }
 

@@ -116,10 +116,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ConstructionMaterials.h" />
+    <ClInclude Include="date_.h" />
     <ClInclude Include="HouseAppliances.h" />
     <ClInclude Include="OfficeSupplies.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Store.h" />
+    <ClInclude Include="StoreConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConstructionMaterials.cpp" />
@@ -129,6 +131,7 @@
     <ClCompile Include="OfficeSupplies.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Store.cpp" />
+    <ClCompile Include="StoreConsole.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

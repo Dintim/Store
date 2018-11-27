@@ -30,6 +30,12 @@
     <ClInclude Include="Store.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="date_.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreConsole.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Product.cpp">
@@ -51,6 +57,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="date_.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreConsole.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

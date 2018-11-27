@@ -31,6 +31,22 @@ void Store::delProduct(Product * prod)
 		cout << "not avaliable\n";
 }
 
+bool Store::delProductById(int id)
+{
+	bool f = false;
+	for (size_t i = 0; i < goods.size(); i++)
+	{
+		if (goods[i]->getId() == id) {
+			f = true;
+			goods.erase(begin(goods) + i);
+			return true;
+		}
+	}
+	if (f == false)
+		cout << "this id does nor exist\n";
+	return false;
+}
+
 void Store::info() const
 {
 	for (size_t i = 0; i < goods.size(); i++)

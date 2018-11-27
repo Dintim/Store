@@ -12,6 +12,7 @@ public:
 
 	void addProduct(Product* prod);
 	void delProduct(Product* prod);
+	bool delProductById(int id);
 	void info()const;
 	void listCriticalExpDate()const;
 	void listExpiredDate()const;
