@@ -473,22 +473,29 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 		}
 	}
 	else if (x == y) {		
-		n--;
-		while (n !=m) {
-			if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
-				counDays += 31;
-			if (n == 4 || n == 6 || n == 9 || n == 11)
-				counDays += 30;
-			if (n == 2) {
-				if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
-					counDays += 29;
-				else
-					counDays += 28;
-			}
+		if (n > m) {
 			n--;
-		}		
+			while (n != m) {
+				if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
+					counDays += 31;
+				if (n == 4 || n == 6 || n == 9 || n == 11)
+					counDays += 30;
+				if (n == 2) {
+					if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
+						counDays += 29;
+					else
+						counDays += 28;
+				}
+				n--;
+			}
+		}
+		else if (n < m) {
+			counDays = -1;
+		}
 	}
-	else return -1;
+	else { 
+		counDays = -1;		
+	}
 	return counDays;
 }
 

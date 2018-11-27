@@ -173,7 +173,7 @@ void StoreConsole::showInfoMenu()
 		st.listCriticalExpDate();
 		break;
 	case 3:
-		cout << "list\n";
+		st.listExpiredDate();
 		break;
 	}
 	
