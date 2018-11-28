@@ -2,6 +2,7 @@
 #include "date_.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Product abstract
@@ -13,6 +14,7 @@ class Product abstract
 	double price;
 public:
 	Product(string name, date_ expDate, double price);
+	Product() = default;
 	void setName(string name);
 	void setExpDate(date_ expDate);
 	void setPrice(double price);
@@ -25,5 +27,6 @@ public:
 	virtual void info()const;
 	virtual bool criticalDaysToExpiration()const=0;
 	bool expiredDate()const;
+	virtual void readFromString(string& str);
 };
 

@@ -3,6 +3,8 @@
 #include <ctime>
 #include <stdio.h>
 #include <conio.h>
+#include <string>
+#include <vector>
 using namespace std;
 
 class date_
@@ -11,6 +13,7 @@ class date_
 public:
 	date_();	
 	date_(int day, int month, int year);
+	date_(string& str);
 	void print()const;
 	void setDay(int day);
 	void setMonth(int month);

@@ -29,3 +29,9 @@ bool HouseAppliances::criticalDaysToExpiration() const
 	}
 	return false;
 }
+
+void HouseAppliances::readFromString(string & str)
+{
+	Product::readFromString(str);
+	this->powerUsage = stoi(str.substr(0, str.find(';')));
+}

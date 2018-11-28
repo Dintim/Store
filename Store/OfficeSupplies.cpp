@@ -29,3 +29,9 @@ bool OfficeSupplies::criticalDaysToExpiration() const
 	}
 	return false;	
 }
+
+void OfficeSupplies::readFromString(string & str)
+{
+	Product::readFromString(str);
+	this->quality = str.substr(0, str.find(';'));
+}

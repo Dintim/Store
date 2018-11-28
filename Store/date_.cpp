@@ -17,6 +17,19 @@ date_::date_(int day, int month, int year)
 	setYear(year);
 }
 
+date_::date_(string & str)
+{
+	vector<string> v(3);
+	for (size_t i = 0; i < v.size(); i++)
+	{
+		v[i] = str.substr(0, str.find('.'));
+		str = str.substr(str.find('.') + 1);
+	}
+	this->setDay(stoi(v[0]));
+	this->setMonth(stoi(v[1]));
+	this->setYear(stoi(v[2]));
+}
+
 void date_::print()const
 {
 	if (day < 10) cout << "0";

@@ -29,3 +29,9 @@ bool ConstructionMaterials::criticalDaysToExpiration() const
 	}
 	return false;
 }
+
+void ConstructionMaterials::readFromString(string & str)
+{
+	Product::readFromString(str);
+	this->ecoMark = stoi(str.substr(0, str.find(';')));
+}

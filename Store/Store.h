@@ -1,6 +1,6 @@
 #pragma once
 #include "Product.h"
-#include <vector>
+#include <fstream>
 class Store
 {
 	string storeName;
@@ -17,5 +17,6 @@ public:
 	void info()const;
 	void listCriticalExpDate()const;
 	void listExpiredDate()const;
+	void loadFromFile();
 };
 

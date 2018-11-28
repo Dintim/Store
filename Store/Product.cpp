@@ -38,6 +38,19 @@ bool Product::expiredDate() const
 	return false;
 }
 
+void Product::readFromString(string & str)
+{
+	vector<string> v(3);
+	for (size_t i = 0; i < v.size(); i++)
+	{
+		v[i] = str.substr(0, str.find(';'));
+		str = str.substr(str.find(';') + 1);
+	}
+	this->name = v[0];
+	this->expDate = date_(v[1]);
+	this->price = stod(v[2]);
+}
+
 //int Product::daysToExpiration() const
 //{
 //	return daysToDateFromCurrDate(this->expDate);
