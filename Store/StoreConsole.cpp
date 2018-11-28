@@ -179,27 +179,30 @@ void StoreConsole::showInfoMenu()
 		cout << "3. Products with expired date\n";
 		cout << "0. go back\n";
 		cin >> ch;
-		if (ch > 3)
+		if (ch > 3) {
 			unknownCommand();
+			continue;
+		}
+		if (ch == 1) {
+			st.info();
+			system("pause");
+			continue;
+		}
+		if (ch == 2) {
+			st.listCriticalExpDate();
+			system("pause");
+			continue;
+		}
+		if (ch == 3) {
+			st.listExpiredDate();
+			system("pause");
+			continue;
+		}
 		else
 			break;
-	}
+	}	
 	if (ch == 0)
-		return;
-	switch (ch)
-	{
-	case 1:
-		st.info();
-		break;
-	case 2:
-		st.listCriticalExpDate();
-		break;
-	case 3:
-		st.listExpiredDate();
-		break;
-	}
-	
-	system("pause");
+		return;		
 }
 
 void StoreConsole::unknownCommand()
