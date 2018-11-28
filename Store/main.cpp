@@ -15,5 +15,10 @@ void main()
 	StoreConsole s;
 	s.start();
 
+	//date_ d(5,12,2024);
+	//date_ lt(28, 11, 2018);
+	//cout << daysToDateFromCurrDate(d);
+	//////cout << daysBetweenDates(lt, d);
+
 	system("pause");
 }

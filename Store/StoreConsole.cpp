@@ -63,7 +63,7 @@ void StoreConsole::mainMenu()
 
 void StoreConsole::exitMenu()
 {
-	cout << "exit";
+	cout << "exit" << endl;
 }
 
 void StoreConsole::loadMenu()
@@ -113,7 +113,7 @@ void StoreConsole::addProductMenu()
 		return;
 	string name;		
 	cout << "Enter product's name: ";
-	getline(cin, name);
+	cin >> name;
 	size_t d, m, y;
 	cout << "Enter product's expiration date: ";
 	cin >> d >> m >> y;
@@ -135,7 +135,7 @@ void StoreConsole::addProductMenu()
 	case 2: {
 		string quality;
 		cout << "Enter product's quality: ";
-		getline(cin, quality);
+		cin >> quality;
 		tmp = new OfficeSupplies(name, expDate, price, quality);
 	}
 		break;

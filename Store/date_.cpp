@@ -500,55 +500,77 @@ int daysBetweenDates(const date_ & a, const date_ & b)
 	}
 	if (b.getYear() == a.getYear()) {
 		x = b.getYear(), y = a.getYear();
-		if (b.getMonth() >= a.getMonth()) {
-			n = b.getMonth(), m = a.getMonth();
-			h = b.getDay(), k = a.getDay();
-		}
-		else if (b.getMonth() < a.getMonth()) {
-			n = a.getMonth(), m = b.getMonth();
-			h = a.getDay(), k = b.getDay();
-		}
-		counDays += h;
-		if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
-			counDays += 31 - k;
-		if (m == 4 || m == 6 || m == 9 || m == 11)
-			counDays += 30 - k;
-		if (m == 2) {
-			if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
-				counDays += 29 - k;
-			else
-				counDays += 28 - k;
-		}
+		if (b.getMonth() != a.getMonth()) {
+			if (b.getMonth() > a.getMonth()) {
+				n = b.getMonth(), m = a.getMonth();
+				h = b.getDay(), k = a.getDay();
+			}
+			if (b.getMonth() < a.getMonth()) {
+				n = a.getMonth(), m = b.getMonth();
+				h = a.getDay(), k = b.getDay();
+			}
 
-		n--;
-		while (n != m) {
-			if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
-				counDays += 31;
-			if (n == 4 || n == 6 || n == 9 || n == 11)
-				counDays += 30;
-			if (n == 2) {
+			counDays += h;
+			if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+				counDays += 31 - k;
+			if (m == 4 || m == 6 || m == 9 || m == 11)
+				counDays += 30 - k;
+			if (m == 2) {
 				if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
-					counDays += 29;
+					counDays += 29 - k;
 				else
-					counDays += 28;
+					counDays += 28 - k;
 			}
 			n--;
+			while (n != m) {
+				if (n == 3 || n == 5 || n == 7 || n == 8 || n == 10)
+					counDays += 31;
+				if (n == 4 || n == 6 || n == 9 || n == 11)
+					counDays += 30;
+				if (n == 2) {
+					if (x % 400 == 0 || (x % 4 == 0 && x % 100 != 0))
+						counDays += 29;
+					else
+						counDays += 28;
+				}
+				n--;
+			}
+		}
+		else {
+			n = b.getMonth(), m = a.getMonth();
+			if (b.getDay() > a.getDay()) {
+				h = b.getDay(), k = a.getDay();
+			}
+			if (b.getDay() < a.getDay()) {
+				h = a.getDay(), k = b.getDay();
+			}
+			counDays += h - k;
+			if (b.getDay() == a.getDay())
+				counDays = 0;
 		}
 	}
 
 
-	if (b.getYear() < a.getYear()) {
+	if (b.getYear() > a.getYear()) {
+		return counDays;
+	}
+	else if (b.getYear() < a.getYear()) {
 		return -counDays;
 	}
 	else {
-		if (b.getMonth() < a.getMonth())
+		if (b.getMonth() > a.getMonth())
+			return counDays;
+		else if (b.getMonth() < a.getMonth())
 			return -counDays;
 		else {
-			if (b.getDay() < a.getDay())
+			if (b.getDay() > a.getDay())
+				return counDays;
+			else if (b.getDay() < a.getDay())
 				return -counDays;
+			else
+				return counDays;
 		}
-	}
-	return counDays;
+	}	
 }
 
 int daysToDateFromCurrDate(const date_ & a)

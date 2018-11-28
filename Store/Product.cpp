@@ -46,6 +46,7 @@ void Product::readFromString(string & str)
 		v[i] = str.substr(0, str.find(';'));
 		str = str.substr(str.find(';') + 1);
 	}
+	this->id = ++prodCode;
 	this->name = v[0];
 	this->expDate = date_(v[1]);
 	this->price = stod(v[2]);

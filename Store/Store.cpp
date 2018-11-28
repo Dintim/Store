@@ -58,24 +58,33 @@ void Store::info() const
 
 void Store::listCriticalExpDate() const
 {
+	bool f = false;
 	for (size_t i = 0; i < goods.size(); i++)
-	{
-		if (goods[i]->criticalDaysToExpiration()) {
+	{		
+		int t = daysToDateFromCurrDate(goods[i]->getExpDate());
+		if (t > 0 && t <= 7) {
+			f = true;
 			goods[i]->info();
 			cout << "\n-------------------------------\n";
-		}
+		}		
 	}
+	if (f == false)
+		cout << "There are no products with critical expiration date\n";
 }
 
 void Store::listExpiredDate() const
 {
+	bool f = false;
 	for (size_t i = 0; i < goods.size(); i++)
-	{
-		if (goods[i]->expiredDate()) {
+	{		
+		if (daysToDateFromCurrDate(goods[i]->getExpDate()) < 0) {
+			f = true;
 			goods[i]->info();
 			cout << "\n-------------------------------\n";
 		}
 	}
+	if (f == false)
+		cout << "There are no products with expired date\n";
 }
 
 void Store::loadFromFile()
