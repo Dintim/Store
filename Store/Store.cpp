@@ -87,20 +87,4 @@ void Store::listExpiredDate() const
 		cout << "There are no products with expired date\n";
 }
 
-void Store::loadFromFile()
-{
-	/*ifstream infile("1.txt");
-	string s;
-	vector<string>str;
-	string name;
-	date_ expDate;
-	double price;
-	while (!infile.eof()) {
-		getline(infile, s);
-		str.push_back(s);
-	}
-	
 
-	infile.close();*/
-	cout << "load" << endl;
-}

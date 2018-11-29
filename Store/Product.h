@@ -28,5 +28,6 @@ public:
 	virtual bool criticalDaysToExpiration()const=0;
 	bool expiredDate()const;
 	virtual void readFromString(string& str);
+	virtual string convertToString();
 };
 

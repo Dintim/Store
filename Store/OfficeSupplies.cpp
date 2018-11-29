@@ -35,3 +35,10 @@ void OfficeSupplies::readFromString(string & str)
 	Product::readFromString(str);
 	this->quality = str.substr(0, str.find(';'));
 }
+
+string OfficeSupplies::convertToString()
+{
+	string res = Product::convertToString();
+	res += this->quality + ';';
+	return res;
+}

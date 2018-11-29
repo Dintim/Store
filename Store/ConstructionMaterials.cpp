@@ -35,3 +35,10 @@ void ConstructionMaterials::readFromString(string & str)
 	Product::readFromString(str);
 	this->ecoMark = stoi(str.substr(0, str.find(';')));
 }
+
+string ConstructionMaterials::convertToString()
+{
+	string res = Product::convertToString();
+	res += to_string(this->ecoMark) + ';';
+	return res;
+}

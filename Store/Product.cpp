@@ -52,7 +52,13 @@ void Product::readFromString(string & str)
 	this->price = stod(v[2]);
 }
 
-//int Product::daysToExpiration() const
-//{
-//	return daysToDateFromCurrDate(this->expDate);
-//}
+string Product::convertToString()
+{
+	string res = string(typeid(*this).name()).substr(6) + ';';
+	res += this->name + ';';
+	res += this->expDate.dateToString() + ';';
+	res += to_string(this->price) + ';';
+	return res;
+}
+
+

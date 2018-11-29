@@ -63,7 +63,16 @@ void StoreConsole::mainMenu()
 
 void StoreConsole::exitMenu()
 {
-	cout << "exit" << endl;
+	system("cls");
+	int ch;	
+	cout << "Choose: exit OR write list of products into file and exit (0 or 1)\n";
+	cin >> ch;
+	if (ch == 0)
+		cout << "You exit without writing list into file" << endl;
+	if (ch == 1) {
+		writeToFile();
+		cout << "You write list into file(""2.txt"") and exit" << endl;
+	}
 }
 
 void StoreConsole::loadMenu()
@@ -209,6 +218,21 @@ void StoreConsole::unknownCommand()
 {
 	cout << "Unknown command\n";
 	system("pause");
+}
+
+void StoreConsole::writeToFile()
+{
+	ofstream out("2.txt");
+	string s;
+	for (size_t i = 0; i < st.countOfGoods(); i++)
+	{
+		s = st[i].convertToString();
+		out << s;
+		if (i!=st.countOfGoods()-1)
+			out << endl;
+	}
+
+	out.close();
 }
 
 

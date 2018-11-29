@@ -339,6 +339,14 @@ void date_::getWeekDay()const
 	
 }
 
+string date_::dateToString()
+{
+	string res = to_string(this->day) + '.';
+	res += to_string(this->month) + '.';
+	res += to_string(this->year);
+	return res;
+}
+
 
 bool operator>(const date_ & a, const date_ & b)
 {

@@ -12,5 +12,6 @@ public:
 	void info()const override;
 	bool criticalDaysToExpiration()const override;
 	void readFromString(string& str) override;
+	string convertToString()override;
 };
 

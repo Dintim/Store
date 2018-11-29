@@ -20,5 +20,6 @@ private:
 	void delProductMenu();
 	void showInfoMenu();
 	void unknownCommand();
+	void writeToFile();
 };
 

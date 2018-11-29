@@ -28,7 +28,8 @@ public:
 	date_ operator--(int);
 	date_ operator++();
 	date_ operator--();
-	void getWeekDay()const;		
+	void getWeekDay()const;
+	string dateToString();
 };
 
 bool operator>(const date_&a, const date_&b);

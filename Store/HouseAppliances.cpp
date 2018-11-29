@@ -35,3 +35,10 @@ void HouseAppliances::readFromString(string & str)
 	Product::readFromString(str);
 	this->powerUsage = stoi(str.substr(0, str.find(';')));
 }
+
+string HouseAppliances::convertToString()
+{
+	string res = Product::convertToString();
+	res += to_string(this->powerUsage) + ';';
+	return res;
+}

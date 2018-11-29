@@ -8,7 +8,7 @@ class Store
 public:
 	Store(string storeName);
 	void setStoreName(string storeName);
-	string getStoreName()const { return storeName; }
+	string getStoreName()const { return storeName; }	
 
 	void addProduct(Product* prod);
 	void delProduct(Product* prod);
@@ -17,6 +17,7 @@ public:
 	void info()const;
 	void listCriticalExpDate()const;
 	void listExpiredDate()const;
-	void loadFromFile();
+	Product& operator[](int index) { return *goods[index]; }
+	Product& operator[](int index)const { return *goods[index]; }	
 };
 
