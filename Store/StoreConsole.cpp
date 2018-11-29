@@ -34,6 +34,7 @@ void StoreConsole::mainMenu()
 		cout << "3. delete product frome store\n";
 		cout << "4. show list of products\n";
 		cout << "0. exit\n";
+		cout << "Choose item: ";
 		cin >> ch;
 		switch (ch)
 		{
@@ -65,7 +66,7 @@ void StoreConsole::exitMenu()
 {
 	system("cls");
 	int ch;	
-	cout << "Choose: exit OR write list of products into file and exit (0 or 1)\n";
+	cout << "Exit OR write list of products into file and exit\nChoose 0 or 1: ";
 	cin >> ch;
 	if (ch == 0)
 		cout << "You exit without writing list into file" << endl;
@@ -106,12 +107,12 @@ void StoreConsole::addProductMenu()
 {
 	int ch;
 	while (true) {
-		system("cls");
-		cout << "Choose store department:\n";
+		system("cls");		
 		cout << "1. House appliance\n";
 		cout << "2. Office supplies\n";
 		cout << "3. Construction materials\n";
 		cout << "0. go back\n";
+		cout << "Choose store department: ";
 		cin >> ch;
 		if (ch > 3)
 			unknownCommand();
@@ -181,14 +182,15 @@ void StoreConsole::showInfoMenu()
 {	
 	int ch;
 	while (true) {
-		system("cls");
-		cout << "Choose print mode:\n";
+		system("cls");		
 		cout << "1. All products\n";
-		cout << "2. Products with critical expiration date\n";
-		cout << "3. Products with expired date\n";
+		cout << "2. Products from selected department\n";
+		cout << "3. Products with critical expiration date\n";
+		cout << "4. Products with expired date\n";
 		cout << "0. go back\n";
+		cout << "Choose print mode: ";
 		cin >> ch;
-		if (ch > 3) {
+		if (ch > 4) {
 			unknownCommand();
 			continue;
 		}
@@ -198,11 +200,16 @@ void StoreConsole::showInfoMenu()
 			continue;
 		}
 		if (ch == 2) {
-			st.listCriticalExpDate();
+			selectDepartmentMenu();			
 			system("pause");
 			continue;
 		}
 		if (ch == 3) {
+			st.listCriticalExpDate();
+			system("pause");
+			continue;
+		}
+		if (ch == 4) {
 			st.listExpiredDate();
 			system("pause");
 			continue;
@@ -233,6 +240,48 @@ void StoreConsole::writeToFile()
 	}
 
 	out.close();
+}
+
+void StoreConsole::selectDepartmentMenu()
+{	
+	int ch;
+	while (true) {
+		system("cls");
+		cout << "1. House appliances\n";
+		cout << "2. Office supplies\n";
+		cout << "3. Construction materials\n";
+		cout << "0. go back\n";
+		cout << "Enter code of department: ";
+		cin >> ch;
+		if (ch > 3) {
+			unknownCommand();
+			continue;
+		}
+		string depName;
+		if (ch == 1) {
+			depName = "HouseAppliances";
+			st.listByDepartment(depName);
+			system("pause");
+			continue;
+		}
+		if (ch == 2) {
+			depName = "OfficeSupplies";
+			st.listByDepartment(depName);
+			system("pause");
+			continue;
+		}
+		if (ch == 3) {
+			depName = "ConstructionMaterials";
+			st.listByDepartment(depName);
+			system("pause");
+			continue;
+		}
+		else
+			break;
+	}
+	if (ch == 0)
+		return;
+	
 }
 
 

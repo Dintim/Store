@@ -1,3 +1,4 @@
 HouseAppliances;TV;25.11.2018;15400.500000;154;
 OfficeSupplies;Printer;5.12.2024;54150.100000;high;
 ConstructionMaterials;Paint;5.12.2018;5500.000000;1;
+HouseAppliances;Microwave;5.4.2015;21154.600000;123;

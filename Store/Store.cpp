@@ -87,4 +87,19 @@ void Store::listExpiredDate() const
 		cout << "There are no products with expired date\n";
 }
 
+void Store::listByDepartment(string dep) const
+{	
+	bool f = false;
+	for (size_t i = 0; i < goods.size(); i++)
+	{
+		if (string(typeid(*goods[i]).name()).substr(6) == dep) {
+			f = true;
+			goods[i]->info();
+			cout << "\n-------------------------------\n";
+		}
+	}
+	if (f == false)
+		cout << "Invalide name of department\n";
+}
+
 

@@ -17,6 +17,7 @@ public:
 	void info()const;
 	void listCriticalExpDate()const;
 	void listExpiredDate()const;
+	void listByDepartment(string dep)const;
 	Product& operator[](int index) { return *goods[index]; }
 	Product& operator[](int index)const { return *goods[index]; }	
 };

@@ -21,5 +21,6 @@ private:
 	void showInfoMenu();
 	void unknownCommand();
 	void writeToFile();
+	void selectDepartmentMenu();
 };
 
